@@ -1,0 +1,29 @@
+// Developed By: Krishan Kumar
+//email: krishankumar150388@gmail.com
+
+
+package javaTest;
+import java.sql.*;
+public class JavaTestCls {
+
+	public static void main(String[] args) {
+			try{
+				
+				
+				String dbUrl = "jdbc:mysql://localhost:3306/javatest";
+				String user = "root";
+				String pass = "0000";
+				Connection conn = DriverManager.getConnection(dbUrl,user,pass);
+				Statement mystatement = conn.createStatement();
+				
+				mystatement.executeUpdate("insert into emp values('mansi')");
+				ResultSet myresult = mystatement.executeQuery("select name from emp");
+				while (myresult.next()){
+					System.out.println(myresult.getString("name"));
+				}
+			}catch(Exception e){
+				System.out.println(e);
+			}
+		}
+	}
+
